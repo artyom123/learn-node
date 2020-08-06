@@ -1,0 +1,31 @@
+{
+  "name": "learn-node",
+  "version": "1.0.0",
+  "description": "learn node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "task1": "nodemon --exec babel-node task1.js",
+    "task2": "nodemon --exec babel-node task2.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artyom123/learn-node.git"
+  },
+  "author": "Artsem Virshych",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artyom123/learn-node/issues"
+  },
+  "homepage": "https://github.com/artyom123/learn-node#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "csvtojson": "^2.0.10"
+  }
+}
