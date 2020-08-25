@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { User } from '../types/user';
 
-const users: User[] = [];
+let users: User[] = [];
 
 export const findById = (req: Request, res: Response) => {
     const { id } = req.params;
@@ -21,7 +21,7 @@ export const findById = (req: Request, res: Response) => {
 export const findAll = (req: Request, res: Response) => {
     const { limit = users.length, loginSubstring = '' }: any = req.query;
 
-    const result: User[] = users.filter((user, index) => user.login.includes(loginSubstring)  && index < limit)
+    const result: User[] = users.filter((user, index) => user.login.includes(loginSubstring))
         .sort((userFirst: User, userSecond: User) => {
             if (userFirst.login < userSecond.login) {
                 return -1;
@@ -32,31 +32,29 @@ export const findAll = (req: Request, res: Response) => {
             }
 
             return 0;
-        });
+        })
+        .slice(0, limit);
 
     res.status(200).json({ result });
 };
 
 export const updateById = (req: Request, res: Response) => {
     const { id } = req.params;
-    const user = users.find((userItem) => userItem.id === id);
+    const userIndex = users.findIndex((userItem) => userItem.id === id);
 
 
-    if (!user) {
+    if (userIndex === -1) {
         res.status(404).json({
             error: 'User not exists'
         });
     } else {
         const { password, age } = req.body;
 
-        Object.assign(
-            users,
-            {
-                ...user,
-                password,
-                age
-            }
-        );
+        users[userIndex] = {
+            ...users[userIndex],
+            password,
+            age,
+        }
 
         res.status(200).json(users);
     }
@@ -65,9 +63,9 @@ export const updateById = (req: Request, res: Response) => {
 export const create = (req: Request, res: Response) => {
     const { login, password, age } = req.body;
 
-    const isLogin = users.find((userItem) => userItem.login === login);
+    const isExist = users.find((userItem) => userItem.login === login);
 
-    if (isLogin) {
+    if (isExist) {
         res.status(404).json({
             error: 'Choose another username'
         });
