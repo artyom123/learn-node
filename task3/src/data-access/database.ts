@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize';
 
 import config from '../config/index';
+import { initUserModel } from '../models/user.model';
 
 
 export default class Database {
@@ -14,6 +15,8 @@ export default class Database {
                 host: config.DB.host,
                 dialect: config.DB.dialect
             });
+        
+        initUserModel(this.db);
 
         this.connect();
     }

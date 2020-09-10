@@ -1,7 +1,10 @@
-import express, { Application, Router } from 'express';
+import express, { Application, Router, Response, Request } from 'express';
 
 import usersRouterInit from '../routers/index';
+import GroupDatabase from '../data-access/index';
 import config from '../config';
+
+import { handleError } from '../helpers/error';
 
 
 class App {
@@ -10,7 +13,9 @@ class App {
 
     constructor() {
         this.app = express();
-        this.router = express.Router();
+        this.router = Router();
+
+        new GroupDatabase();
 
         usersRouterInit(this.router);
 
@@ -21,6 +26,9 @@ class App {
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
         this.app.use('/', this.router);
+        this.app.use((err: any, req: Request, res: Response, next: any) => {
+            handleError(err, res);
+        });
     }
 
     start() {
