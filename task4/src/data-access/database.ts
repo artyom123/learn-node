@@ -1,8 +1,9 @@
 import { Sequelize } from 'sequelize';
 
 import config from '../config/index';
-import { initUserModel, UserToMany } from '../models/user.model';
-import { initGroupModel, GroupToMany } from '../models/group.model';
+import { UserToMany, GroupToMany } from '../models/index';
+import { initUserModel } from '../models/user.model';
+import { initGroupModel } from '../models/group.model';
 import { initUsersGroupsModel } from '../models/users_groups.model';
 
 

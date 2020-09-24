@@ -2,8 +2,6 @@ import { Model, DataTypes, Sequelize } from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Permission } from '../types/group';
-import { UserModel } from '../models/user.model';
-import { UsersGroupsModel } from '../models/users_groups.model';
 
 export class GroupModel extends Model {
     public id!: string;
@@ -34,8 +32,4 @@ export const initGroupModel = (sequelize: Sequelize) => {
             sequelize,
         }
     );
-}
-
-export function GroupToMany () {
-    GroupModel.belongsToMany(UserModel, { through: UsersGroupsModel });
 }
