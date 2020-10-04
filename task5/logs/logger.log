@@ -1,0 +1,56 @@
+@ 2020-10-03T18:41:44.095Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:04:32.493Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:06:48.757Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:07:17.707Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:09:27.247Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:09:33.915Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:12:23.885Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:15:55.162Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:18:41.658Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:18:45.865Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:21:43.050Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:23:58.725Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:24:07.541Z - info: METHOD: PUT, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:39:23.260Z - info: METHOD: POST, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:39:35.069Z - info: METHOD: POST, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:40:08.147Z - info: METHOD: POST, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:40:37.441Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:40:52.109Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:50:09.806Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:50:14.321Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T19:50:22.086Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:16:23.172Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:27:57.156Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:27:57.394Z - error: METHOD: undefined, PARAMS: undefined
+@ 2020-10-03T20:28:59.862Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:29:00.049Z - error: METHOD: undefined, PARAMS: undefined
+@ 2020-10-03T20:33:34.303Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:33:34.458Z - error: METHOD: undefined, PARAMS: undefined
+@ 2020-10-03T20:33:37.092Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:33:37.252Z - error: METHOD: undefined, PARAMS: undefined
+@ 2020-10-03T20:34:27.992Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:34:28.166Z - error: METHOD: undefined, PARAMS: undefined
+@ 2020-10-03T20:36:15.262Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:36:15.419Z - error: METHOD NAME: undefined, PARAMS: {"id":"5859e528-365b-4550-aee1-828aa3b879c5"}, MESSAGE: User doesn't exists
+@ 2020-10-03T20:49:42.532Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:49:44.193Z - error: METHOD NAME: findById, PARAMS: {"id":"5859e528-365b-4550-aee1-828aa3b879c5"}, MESSAGE: Error: find user
+@ 2020-10-03T20:49:54.507Z - info: METHOD: GET, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:49:54.655Z - error: METHOD NAME: findById, PARAMS: {"id":"5859e528-365b-4550-aee1-828aa3b879c5"}, MESSAGE: Error: find user
+@ 2020-10-03T20:50:11.910Z - info: METHOD: POST, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:50:33.674Z - info: METHOD: PUT, PARAMS: {"login":"2","password":"asca","age":"4"}
+@ 2020-10-03T20:50:38.793Z - info: METHOD: PUT, PARAMS: {"login":"asv2","password":"asca","age":"4"}
+@ 2020-10-03T20:50:51.612Z - info: METHOD: PUT, PARAMS: {"login":"asv2","password":"asca","age":"4"}
+@ 2020-10-03T20:50:56.226Z - info: METHOD: GET, PARAMS: {"login":"asv2","password":"asca","age":"4"}
+@ 2020-10-03T20:51:02.900Z - info: METHOD: GET, PARAMS: {"login":"asv2","password":"asca","age":"4"}
+@ 2020-10-03T20:51:03.188Z - error: METHOD NAME: findById, PARAMS: {"id":"995b3f9e-24fb-4b3a-9097-07fe48536d78"}, MESSAGE: Error: find user
+@ 2020-10-03T20:51:20.643Z - info: METHOD: DELETE, PARAMS: {"login":"asv2","password":"asca","age":"4"}
+@ 2020-10-03T21:05:33.932Z - info: METHOD: GET, PARAMS: {"login":"asv2","password":"asca","age":"4"}
+@ 2020-10-03T21:05:34.101Z - error: METHOD: undefined, PARAMS: undefined
+@ 2020-10-03T21:06:48.220Z - info: METHOD: GET, PARAMS: {"login":"asv2","password":"asca","age":"4"}
+@ 2020-10-03T21:06:48.981Z - error: METHOD: undefined, PARAMS: undefined
+@ 2020-10-03T21:08:06.419Z - info: METHOD: GET, PARAMS: {"login":"asv2","password":"asca","age":"4"}
+@ 2020-10-03T21:08:06.593Z - error: METHOD: undefined, PARAMS: undefined
+@ 2020-10-03T21:10:15.204Z - info: METHOD: GET, PARAMS: {"login":"asv2","password":"asca","age":"4"}
+@ 2020-10-03T21:10:15.347Z - error: METHOD NAME: findById, PARAMS: {"id":"995b3f9e-24fb-4b3a-9097-07fe48536d78"}, MESSAGE: Error: find user
+@ 2020-10-04T09:59:49.553Z - info: METHOD: GET, PARAMS: {"login":"asv2","password":"asca","age":"4"}
+@ 2020-10-04T09:59:49.723Z - error: METHOD NAME: findById, PARAMS: {"id":"995b3f9e-24fb-4b3a-9097-07fe48536d78"}, MESSAGE: Error: find user
