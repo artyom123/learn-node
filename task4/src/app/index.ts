@@ -3,6 +3,7 @@ import express, { Application, Router, Response, Request } from 'express';
 import RouterInit from '../routers/index';
 import GroupDatabase from '../data-access/index';
 import config from '../config';
+import { logger } from '../helpers/logger';
 
 import { handleError } from '../helpers/error';
 
@@ -25,9 +26,22 @@ class App {
     config() {
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
-        this.app.use('/', this.router);
+        this.app.use('/', (req: Request, res: Response, next: any) => {
+            const { path, method, params, query, body } = req;
+
+            logger.info({ method, body });
+            next();
+        }, this.router);
         this.app.use((err: any, req: Request, res: Response, next: any) => {
             handleError(err, res);
+        });
+
+        process.on('uncaughtException', (error) => {
+            logger.error({ info: 'uncaughtException' });
+        });
+
+        process.on('unhandledRejection', error => {
+            logger.error({ info: 'promise unhandled rejection' });
         });
     }
 
