@@ -6,11 +6,9 @@ if (!fs.existsSync('logs')) {
 }
 
 const winstonFormat = winston.format.printf((info: any) => {
-    console.log('=======???>>> ', info.level, info.message);
 
     switch (info.level) {
         case 'error':
-            console.log('==================<<<<< ', info.message.method_name);
             if (!info.message.method_name) {
                 return `@ ${info.timestamp} - ${info.level}: MESSAGE: ${info.message.info}`;
             }
