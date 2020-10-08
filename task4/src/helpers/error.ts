@@ -1,22 +1,43 @@
 import { Response } from 'express';
 
+import { logger } from '../helpers/logger';
+
 export class ErrorHandler extends Error {
     statusCode: number;
-    message: string;
+    info: string;
+    method_name?: string;
+    params?: object;
 
-    constructor(statusCode: number, message: string) {
+    constructor(
+        statusCode: number,
+        info: string,
+        method_name?: string,
+        params?: object,
+    ) {
         super();
         this.statusCode = statusCode;
-        this.message = message;
+        this.info = info;
+
+        this.method_name = method_name;
+        this.params = params;
     }
 }
 
-export const handleError = (err: any, res: Response) => {
-    const { statusCode, message } = err;
+export const handleError = (err: any, res: Response, path: string) => {
+    const {
+        statusCode,
+        info,
+        method_name,
+        params,
+    } = err;
 
     res.status(statusCode).json({
         status: "error",
         statusCode,
-        message
+        info
     });
+
+    if (statusCode >= 500) {
+        logger.error({ method_name, path, params, info });
+    }
 };

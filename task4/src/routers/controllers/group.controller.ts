@@ -6,7 +6,6 @@ import { UsersGroupsModel } from '../../models/users_groups.model';
 import { DEFAULT_GROUPS } from '../../data/data-users';
 import GroupServices from '../../services/group.services';
 import { ErrorHandler } from '../../helpers/error';
-import { logger } from '../../helpers/logger';
 
 import UserServices from '../../services/user.services';
 
@@ -47,8 +46,7 @@ class GroupController {
                 res.status(200).json({ ...group.get(), users });
             }
         } catch (error) {
-            logger.error({ method_name: 'findById', params: { id }, info: 'Error: find group' });
-            next(new ErrorHandler(500, 'Error: find group'));
+            next(new ErrorHandler(500, 'Error: find group', 'findById', { id }));
         }
     }
 
@@ -58,8 +56,7 @@ class GroupController {
 
             res.status(200).json({ groups });
         } catch (error) {
-            logger.error({ method_name: 'findAll', params: {}, info: 'Error: find groups' });
-            next(new ErrorHandler(500, 'Error: find groups'));
+            next(new ErrorHandler(500, 'Error: find groups', 'findAll'));
         }
     }
     
@@ -71,8 +68,7 @@ class GroupController {
 
             res.status(200).json({ success: `Group ${id} updated` });
         } catch (error) {
-            logger.error({ method_name: 'updateById', params: { id }, info: 'Error: update group' });
-            next(new ErrorHandler(500, 'Error: update group'));
+            next(new ErrorHandler(500, 'Error: update group', 'updateById', { id }));
         }
     }
     
@@ -88,8 +84,7 @@ class GroupController {
 
             res.status(200).json(newGroup);
         } catch (error) {
-            logger.error({ method_name: 'create', params: req.body, info: 'Error: create group' });
-            next(new ErrorHandler(500, 'Error: create group'));
+            next(new ErrorHandler(500, 'Error: create group', 'create', req.body));
         }
     }
     
@@ -101,8 +96,7 @@ class GroupController {
 
             res.status(200).json({ success: `Group ${id} deleted` });
         } catch (error) {
-            logger.error({ method_name: 'remove', params: { id }, info: 'Error: remove group' });
-            next(new ErrorHandler(500, 'Error: remove group'));
+            next(new ErrorHandler(500, 'Error: remove group', 'remove', { id }));
         }
     }
 };

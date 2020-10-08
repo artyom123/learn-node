@@ -13,9 +13,9 @@ const winstonFormat = winston.format.printf((info: any) => {
                 return `@ ${info.timestamp} - ${info.level}: MESSAGE: ${info.message.info}`;
             }
 
-            return `@ ${info.timestamp} - ${info.level}: METHOD NAME: ${info.message.method_name}, PARAMS: ${JSON.stringify(info.message.params)}, MESSAGE: ${info.message.info}`;
+            return `@ ${info.timestamp} - ${info.level}: METHOD NAME: ${info.message.method_name}, PATH: ${info.message.path}, PARAMS: ${JSON.stringify(info.message.params)}, MESSAGE: ${info.message.info}`;
         default:
-            return `@ ${info.timestamp} - ${info.level}: METHOD: ${info.message.method}, PARAMS: ${JSON.stringify(info.message.body)}`;
+            return `@ ${info.timestamp} - ${info.level}: METHOD: ${info.message.method}, PATH: ${info.message.path}, PARAMS: ${JSON.stringify(info.message.body)}`;
     };
 });
 

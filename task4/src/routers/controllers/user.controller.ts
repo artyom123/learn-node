@@ -7,7 +7,6 @@ import { GroupModel } from '../../models/group.model';
 import { UsersGroupsModel } from '../../models/users_groups.model';
 import { DEFAULT_USERS } from '../../data/data-users';
 import { ErrorHandler } from '../../helpers/error';
-import { logger } from '../../helpers/logger';
 
 class UserController {
     constructor() {
@@ -46,8 +45,7 @@ class UserController {
                 res.status(200).json({ ...user.get(), groups });
             }
         } catch (error) {
-            logger.error({ method_name: 'findById', params: { id }, info: 'Error: find user' });
-            next(new ErrorHandler(500, 'Error: find user'));
+            next(new ErrorHandler(500, 'Error: find user', 'findById', { id }));
         }
     }
 
@@ -59,8 +57,7 @@ class UserController {
 
             res.status(200).json({ users });
         } catch (error) {
-            logger.error({ method_name: 'findAll', params: req.query, info: 'Error: find users' });
-            next(new ErrorHandler(500, 'Error: find users'));
+            next(new ErrorHandler(500, 'Error: find users', 'findAll', { limit, loginSubstring }));
         }
     }
     
@@ -72,8 +69,7 @@ class UserController {
 
             res.status(200).json({ success: `User ${id} updated` });
         } catch (error) {
-            logger.error({ method_name: 'updateById', params: { id }, info: 'Error: update user' });
-            next(new ErrorHandler(500, 'Error: update user'));
+            next(new ErrorHandler(500, 'Error: update user', 'updateById', { id }));
         }
     }
     
@@ -83,8 +79,7 @@ class UserController {
 
             res.status(200).json(newUser);
         } catch (error) {
-            logger.error({ method_name: 'create', params: req.body, info: 'Error: create user' });
-            next(new ErrorHandler(500, 'Error: create user'));
+            next(new ErrorHandler(500, 'Error: create user', 'create', req.body));
         }
     }
     
@@ -96,8 +91,7 @@ class UserController {
 
             res.status(200).json({ success: `User ${id} deleted` });
         } catch (error) {
-            logger.error({ method_name: 'remove', params: { id }, info: 'Error: remove user' });
-            next(new ErrorHandler(500, 'Error: remove user'));
+            next(new ErrorHandler(500, 'Error: remove user', 'remove', { id }));
         }
     }
 };
