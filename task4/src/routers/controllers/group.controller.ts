@@ -46,7 +46,7 @@ class GroupController {
                 res.status(200).json({ ...group.get(), users });
             }
         } catch (error) {
-            next(new ErrorHandler(500, 'Error: find group'));
+            next(new ErrorHandler(500, 'Error: find group', 'findById', { id }));
         }
     }
 
@@ -56,7 +56,7 @@ class GroupController {
 
             res.status(200).json({ groups });
         } catch (error) {
-            next(new ErrorHandler(500, 'Error: find groups'));
+            next(new ErrorHandler(500, 'Error: find groups', 'findAll'));
         }
     }
     
@@ -68,7 +68,7 @@ class GroupController {
 
             res.status(200).json({ success: `Group ${id} updated` });
         } catch (error) {
-            next(new ErrorHandler(500, 'Error: update group'));
+            next(new ErrorHandler(500, 'Error: update group', 'updateById', { id }));
         }
     }
     
@@ -84,7 +84,7 @@ class GroupController {
 
             res.status(200).json(newGroup);
         } catch (error) {
-            next(new ErrorHandler(500, 'Error: create group'));
+            next(new ErrorHandler(500, 'Error: create group', 'create', req.body));
         }
     }
     
@@ -96,7 +96,7 @@ class GroupController {
 
             res.status(200).json({ success: `Group ${id} deleted` });
         } catch (error) {
-            next(new ErrorHandler(500, 'Error: remove group'));
+            next(new ErrorHandler(500, 'Error: remove group', 'remove', { id }));
         }
     }
 };

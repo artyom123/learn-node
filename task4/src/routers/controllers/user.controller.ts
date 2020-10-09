@@ -45,7 +45,7 @@ class UserController {
                 res.status(200).json({ ...user.get(), groups });
             }
         } catch (error) {
-            next(new ErrorHandler(500, 'Error: find user'));
+            next(new ErrorHandler(500, 'Error: find user', 'findById', { id }));
         }
     }
 
@@ -57,7 +57,7 @@ class UserController {
 
             res.status(200).json({ users });
         } catch (error) {
-            next(new ErrorHandler(500, 'Error: find users'));
+            next(new ErrorHandler(500, 'Error: find users', 'findAll', { limit, loginSubstring }));
         }
     }
     
@@ -69,7 +69,7 @@ class UserController {
 
             res.status(200).json({ success: `User ${id} updated` });
         } catch (error) {
-            next(new ErrorHandler(500, 'Error: update user'));
+            next(new ErrorHandler(500, 'Error: update user', 'updateById', { id }));
         }
     }
     
@@ -79,7 +79,7 @@ class UserController {
 
             res.status(200).json(newUser);
         } catch (error) {
-            next(new ErrorHandler(500, 'Error: create user'));
+            next(new ErrorHandler(500, 'Error: create user', 'create', req.body));
         }
     }
     
@@ -91,7 +91,7 @@ class UserController {
 
             res.status(200).json({ success: `User ${id} deleted` });
         } catch (error) {
-            next(new ErrorHandler(500, 'Error: remove user'));
+            next(new ErrorHandler(500, 'Error: remove user', 'remove', { id }));
         }
     }
 };
