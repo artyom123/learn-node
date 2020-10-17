@@ -1,4 +1,5 @@
-import express, { Express, Application, Router, Response, Request } from 'express';
+import express, { Application, Router, Response, Request } from 'express';
+import cors from 'cors';
 
 import RouterInit from '../routers/index';
 import GroupDatabase from '../data-access/index';
@@ -6,7 +7,8 @@ import config from '../config';
 import { logger } from '../helpers/logger';
 
 import { handleError } from '../helpers/error';
-import { parse } from 'path';
+
+import middleware from '../validation/middleware';
 
 class App {
     app: Application;
@@ -21,13 +23,17 @@ class App {
 
         RouterInit.usersRouter(this.router);
         RouterInit.groupsRouter(this.router);
+        RouterInit.authRouter(this.router);
 
         this.config();
     }
 
     config() {
+        this.app.use(cors());
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
+        this.app.use('/users*', middleware());
+        this.app.use('/groups*', middleware());
         this.app.use('/', (req: Request, res: Response, next: any) => {
             const { path, method, body } = req;
 
