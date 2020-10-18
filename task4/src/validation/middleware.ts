@@ -1,20 +1,40 @@
 import Joi from 'joi';
 import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+
+import { ErrorHandler } from '../helpers/error';
+import config from '../config/index';
 
 type Property = 'body' | 'params';
 
-const middleware = (schema: Joi.Schema, property: Property) => {
+const middleware = (schema?: Joi.Schema, property?: Property) => {
     return (req: Request, res: Response, next: NextFunction) => {
-        const { error }: { error?: Joi.ValidationError } = schema.validate(req[property]);
+        if (schema && property) {
+            const { error }: { error?: Joi.ValidationError } = schema.validate(req[property]);
 
-        if (!error) {
-            // eslint-disable-next-line callback-return
-            next();
+            if (!error) {
+                // eslint-disable-next-line callback-return
+                next();
+            } else {
+                const { details } = error;
+                const message = details.map(item => item.message).join(',');
+    
+                throw new ErrorHandler(400, message);
+            }
         } else {
-            const { details } = error;
-            const message = details.map(item => item.message).join(',');
+            const token = req.headers['x-access-token'] as string;
 
-            res.status(400).json({ error: message });
+            if (!token) {
+                throw new ErrorHandler(401, 'No token provided');
+            }
+
+            try {
+                jwt.verify(token, config.JWTSecret);
+            } catch (error) {
+                throw new ErrorHandler(403, 'Failed to authenticate token.');
+            }
+
+            next();
         }
     };
 };

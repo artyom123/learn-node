@@ -24,3 +24,8 @@ export const groupSchema = Joi.object().keys({
     permissions: Joi.array().items(Joi.string().valid(...arrayPermission)).required(),
     users: Joi.array().items(Joi.string().uuid()).min(1).default(null),
 });
+
+export const authSchema = Joi.object().keys({
+    login: Joi.string().required(),
+    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{2,20}$')).required(),
+});

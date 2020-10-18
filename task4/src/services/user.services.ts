@@ -42,6 +42,21 @@ class UserServices {
         });
     }
 
+    findOne ({ login, password }: any) {
+        return UserModel.findOne({ where: { login } })
+            .then((user) => {
+                if (!user) {
+                    return null;
+                }
+
+                if (user?.password !== password) {
+                    return null;
+                }
+
+                return user;
+            });
+    }
+
     async addUsersToGroup (groupId: string, userIds: any) {
         const { db } = database;
         const transaction = await db.transaction();

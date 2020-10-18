@@ -6,7 +6,8 @@ import {
     idScheme,
     infoSchema,
     userSchema,
-    groupSchema
+    groupSchema,
+    authSchema,
 } from '../validation/index';
 import middleware from '../validation/middleware';
 
@@ -36,7 +37,15 @@ class GroupsRouter {
     }
 };
 
+class LoginRouter {
+    init(router: Router) {
+        router.route('/login')
+            .post(middleware(authSchema, 'body'), userController.login);
+    }
+};
+
 export default {
     usersRouter: new UsersRouter().init,
     groupsRouter: new GroupsRouter().init,
+    authRouter: new LoginRouter().init,
 };
