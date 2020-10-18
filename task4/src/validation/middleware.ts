@@ -2,6 +2,7 @@ import Joi from 'joi';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
+import { ErrorHandler } from '../helpers/error';
 import config from '../config/index';
 
 type Property = 'body' | 'params';
@@ -18,19 +19,19 @@ const middleware = (schema?: Joi.Schema, property?: Property) => {
                 const { details } = error;
                 const message = details.map(item => item.message).join(',');
     
-                res.status(400).json({ error: message });
+                throw new ErrorHandler(400, message);
             }
         } else {
             const token = req.headers['x-access-token'] as string;
 
             if (!token) {
-                return res.status(401).send('No token provided');
+                throw new ErrorHandler(401, 'No token provided');
             }
 
             try {
                 jwt.verify(token, config.JWTSecret);
             } catch (error) {
-                return res.status(403).send('Failed to authenticate token.');
+                throw new ErrorHandler(403, 'Failed to authenticate token.');
             }
 
             next();

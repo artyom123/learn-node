@@ -43,6 +43,16 @@ class App {
         }, this.router);
         this.app.use((err: any, req: Request, res: Response, next: any) => {
             const { path } = req;
+            const {
+                statusCode,
+                info,
+                method_name,
+                params,
+            } = err;
+
+            if (statusCode >= 500) {
+                logger.error({ method_name, path, params, info });
+            }
 
             handleError(err, res, path);
         });
