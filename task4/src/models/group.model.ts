@@ -29,6 +29,7 @@ export const initGroupModel = (sequelize: Sequelize) => {
         },
         {
             modelName: 'Groups',
+            timestamps: false,
             sequelize,
         }
     );
