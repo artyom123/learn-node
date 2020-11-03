@@ -32,6 +32,7 @@ export const initUserModel = (sequelize: Sequelize) => {
         },
         {
             modelName: 'Users',
+            timestamps: false,
             sequelize,
         }
     );
